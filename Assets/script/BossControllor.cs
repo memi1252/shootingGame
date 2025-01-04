@@ -1,20 +1,17 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class MonsterControllor : BaseControllor
+public class BossControllor : BaseControllor
 {
-    [SerializeField] public float Hp = 100;
+    [SerializeField] public float Hp = 1000;
     [SerializeField] private GameObject Ammo;
     [SerializeField] private GameObject[] bup;
-
+    
     private void Start()
     {
         StartCoroutine(Attack());
     }
-
+    
     private void Update()
     {
         if (Hp <= 0)
@@ -24,22 +21,17 @@ public class MonsterControllor : BaseControllor
             {
                 Instantiate(bup[a], transform.position, transform.rotation);
             }
-            GameManager.Instance.score += 100;
-            for (int i = 0; i < EnemySpawn.Instance.max.Length; i++)
-            {
-                if (EnemySpawn.Instance.max[i] == transform.gameObject)
-                {
-                    EnemySpawn.Instance.max[i] = null;
-                }
-            }
+            GameManager.Instance.score += 300;
+            GameManager.Instance.BossSpawned = false;
+            UIManager.Instance.BossUI.Hide();
             Destroy(gameObject);
         }
     }
     
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(Random.Range(2, 4));
-        Attack(Ammo, 15);
+        yield return new WaitForSeconds(Random.Range(1, 3));
+        Attack(Ammo, 30);
         StartCoroutine(Attack());
     }
 }

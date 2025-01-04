@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Monster
+  - Boss
   layers:
   - Default
   - TransparentFX

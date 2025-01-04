@@ -7,20 +7,16 @@ using Random = UnityEngine.Random;
 
 public class PlayerControllor : BaseControllor
 {
-    public static PlayerControllor Instance { get; private set; }
     
     [SerializeField] public float Durability = 100; // 내구도
     [SerializeField] public float fuel = 100;// 연료
-    [SerializeField] public int Score = 0; // 점수
     [SerializeField] private GameObject Ammo;
     [SerializeField] private AudioClip attacClip;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] public int Damage = 20;
-    [SerializeField] public int DamageUpCount = 0;
 
     private void Awake()
     {
-        Instance = this;
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(fuelDown());
     }
@@ -37,8 +33,7 @@ public class PlayerControllor : BaseControllor
 
         if (fuel == 0)
         {
-            Time.timeScale = 0;
-            Debug.Log("GameOver");
+            GameManager.Instance.playerDie = true;
         }
     }
     

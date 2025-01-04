@@ -7,20 +7,20 @@ using UnityEngine.UI;
 
 public class PlayerSkill : MonoBehaviour
 {
-    [SerializeField] private Image skill1Image;
-    [SerializeField] private Image skill2Image;
+    [SerializeField] public Image skill1Image;
+    [SerializeField] public Image skill2Image;
     
-    [SerializeField] private bool isSkill1CoolTime = false;
-    [SerializeField] private bool isSkill2CoolTime = false;
+    [SerializeField] public bool isSkill1CoolTime = false;
+    [SerializeField] public bool isSkill2CoolTime = false;
     
     
-    [SerializeField] private float skill1CoolTime = 5;
-    [SerializeField] private float skill2CoolTime = 20;
+    [SerializeField] public float skill1CoolTime = 5;
+    [SerializeField] public float skill2CoolTime = 20;
     
-    [SerializeField] private int skill1Count = 5;
-    [SerializeField] private int skill2Count = 2;
+    [SerializeField] public int skill1Count = 5;
+    [SerializeField] public int skill2Count = 2;
 
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] public TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class PlayerSkill : MonoBehaviour
                 skill1Count--;
                 skill1Image.fillAmount = 1;
                 isSkill1CoolTime = true;
-                PlayerControllor.Instance.Durability += 20;
+                GameManager.Instance.PlayerControllor.Durability += 20;
                 Debug.Log("skill1");
             }
             else if (skill1Count == 0 && (isSkill1CoolTime == false || isSkill1CoolTime == true))
@@ -58,6 +58,27 @@ public class PlayerSkill : MonoBehaviour
             {
                 skill2Count--;
                 skill2Image.fillAmount = 1;
+                if (GameManager.Instance.ammos != null)
+                {
+                    for (int i = GameManager.Instance.ammos.Count - 1; i >= 0; i--)
+                    {
+                        var ammo = GameManager.Instance.ammos[i];
+                        GameManager.Instance.ammos.RemoveAt(i);
+                        Destroy(ammo);
+                    }
+                }
+                if (GameManager.Instance.monsters != null)
+                {
+                    for (int i = GameManager.Instance.monsters.Count - 1; i >= 0; i--)
+                    {
+                        var monster = GameManager.Instance.monsters[i];
+                        monster.GetComponent<MonsterControllor>().Hp -= 50;
+                    }
+                }
+                if (GameManager.Instance.Boss != null)
+                {
+                    GameManager.Instance.Boss.GetComponent<BossControllor>().Hp -= 100;
+                }
                 isSkill2CoolTime = true;
                 Debug.Log("skill2");
             }
@@ -102,5 +123,10 @@ public class PlayerSkill : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         text.gameObject.SetActive(false);
+    }
+
+    public void HIDE()
+    {
+        gameObject.SetActive(false);
     }
 }

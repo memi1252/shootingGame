@@ -38,7 +38,19 @@ public class Ammo : MonoBehaviour
             }
             else if (hit.collider.tag == "Player")
             {
+                if (GameManager.Instance.nerverDie)
+                {
+                    return;
+                }
                 hit.collider.GetComponent<PlayerControllor>().Durability -= damage;
+                Debug.Log("Hit");
+                audioSource.clip = audioClip;
+                audioSource.Play();
+                Destroy(gameObject);
+            }
+            else if (hit.collider.tag == "Boss")
+            {
+                hit.collider.GetComponent<BossControllor>().Hp -= damage;
                 Debug.Log("Hit");
                 audioSource.clip = audioClip;
                 audioSource.Play();
@@ -51,6 +63,7 @@ public class Ammo : MonoBehaviour
     IEnumerator Ammoremove()
     {
         yield return new WaitForSeconds(5f);
+        GameManager.Instance.ammos.Remove(gameObject);
         Destroy(gameObject);
     }
 }

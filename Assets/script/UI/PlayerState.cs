@@ -11,8 +11,13 @@ public class PlayerState : MonoBehaviour
 
    private void Update()
    {
-      durabilityImage.fillAmount = PlayerControllor.Instance.Durability / 100;
-      fuelImage.fillAmount = PlayerControllor.Instance.fuel / 100;
-      scoreText.text = "Score : " + PlayerControllor.Instance.Score;
+      durabilityImage.fillAmount = GameManager.Instance.PlayerControllor.Durability / 100;
+      fuelImage.fillAmount = GameManager.Instance.PlayerControllor.fuel / 100;
+      scoreText.text = "Score : " + GameManager.Instance.score;
+   }
+
+   public void Hide()
+   {
+      gameObject.SetActive(false);
    }
 }

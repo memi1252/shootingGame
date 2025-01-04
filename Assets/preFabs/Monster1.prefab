@@ -233,9 +233,14 @@ MonoBehaviour:
   Hp: 100
   Ammo: {fileID: 6060847827658167261, guid: f9774cee226eaa6459bc8bf44902e8e7, type: 3}
   bup:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1529461375284580290, guid: cd431c9b641b52a439a613fd3317c220, type: 3}
+  - {fileID: 0}
+  - {fileID: 1529461375284580290, guid: 2404ee0d8b22e6d4a8e9ce73b561bdc5, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1529461375284580290, guid: 4e00c36ae7324274a9e3207dfd7ba0f9, type: 3}
+  - {fileID: 0}
+  - {fileID: 1529461375284580290, guid: 6aaa9e2b9ad217d4486516d05df0f35b, type: 3}
 --- !u!65 &8123761308405809064
 BoxCollider:
   m_ObjectHideFlags: 0

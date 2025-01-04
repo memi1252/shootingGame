@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -33,11 +34,23 @@ public class EnemySpawn : MonoBehaviour
 
     private void Spawn()
     {
+        if (GameManager.Instance.BossSpawned)
+        {
+            return;
+        }
         var spawnPointIndex = Random.Range(0, spawnPoints.Length);
         if (max[spawnPointIndex] == null)
         {
             var newEnemy = Instantiate(enemy[Random.Range(0, enemy.Length)], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-            max[spawnPointIndex] = newEnemy;
+            if (newEnemy.GetComponent<MonsterControllor>() != null)
+            {
+                GameManager.Instance.monsters.Add(newEnemy);
+                max[spawnPointIndex] = newEnemy;
+            }
+            else
+            {
+                GameManager.Instance.rocks.Add(newEnemy);
+            }
         }
     }
 }

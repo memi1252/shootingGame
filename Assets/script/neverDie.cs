@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DamegeUp : MonoBehaviour
+public class neverDie : MonoBehaviour
 {
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private AudioSource audioSource;
@@ -28,19 +27,14 @@ public class DamegeUp : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                if(GameManager.Instance.DamageUpCount < 5)
-                {
-                    hit.collider.GetComponent<PlayerControllor>().Damage += 5;
-                    GameManager.Instance.DamageUpCount++;
-                    Debug.Log("DamigeUP");
+                
+                    GameManager.Instance.nerverDie = true;
+                    Debug.Log("nerverDIe");
+                    GameManager.Instance.nerverDieTime = 5;
                     audioSource.clip = audioClip;
                     audioSource.Play();
                     Destroy(gameObject);
-                }
-                else
-                {
-                    GameManager.Instance.score += 100;
-                }
+                
             }
             
         }
