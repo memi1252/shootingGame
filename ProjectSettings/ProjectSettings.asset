@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: e004d8d88ce31234a8c14ea080d43824
+  productGUID: 3665ceb1319de6f40aa0d0052b3dc81b
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -781,14 +781,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: shooting Game
+  metroPackageName: stingGame
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: shooting Game
+  metroApplicationDescription: stingGame
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0

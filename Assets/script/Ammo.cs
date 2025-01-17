@@ -9,10 +9,11 @@ public class Ammo : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] public float damage = 20;
+    [SerializeField] private GameObject particle;
 
     private void Awake()
     {
-        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        audioSource = SoundManager.Instance.audioSource;
     }
 
     private void Start()
@@ -34,6 +35,7 @@ public class Ammo : MonoBehaviour
                 Debug.Log("Hit");
                 audioSource.clip = audioClip;
                 audioSource.Play();
+                Instantiate(particle, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
             else if (hit.collider.tag == "Player")
@@ -46,6 +48,7 @@ public class Ammo : MonoBehaviour
                 Debug.Log("Hit");
                 audioSource.clip = audioClip;
                 audioSource.Play();
+                Instantiate(particle, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
             else if (hit.collider.tag == "Boss")
@@ -54,6 +57,7 @@ public class Ammo : MonoBehaviour
                 Debug.Log("Hit");
                 audioSource.clip = audioClip;
                 audioSource.Play();
+                Instantiate(particle, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }

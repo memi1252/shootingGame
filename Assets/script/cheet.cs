@@ -51,6 +51,9 @@ public class cheet : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F5))
         {
             GameManager.Instance.PlayerControllor.fuel = 100;
+        }else if(Input.GetKeyDown(KeyCode.F6))
+        {
+            GameManager.Instance.isBossDie1 = true;
         }
     }
 }

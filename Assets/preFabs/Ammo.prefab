@@ -123,3 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   audioSource: {fileID: 0}
+  damage: 20
+  particle: {fileID: 7082950498872946092, guid: f24044937c0ec9e4681f31c91d9fbfce,
+    type: 3}

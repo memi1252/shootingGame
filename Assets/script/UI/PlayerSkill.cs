@@ -60,19 +60,17 @@ public class PlayerSkill : MonoBehaviour
                 skill2Image.fillAmount = 1;
                 if (GameManager.Instance.ammos != null)
                 {
-                    for (int i = GameManager.Instance.ammos.Count - 1; i >= 0; i--)
+                    foreach (var ammo in GameManager.Instance.ammos)
                     {
-                        var ammo = GameManager.Instance.ammos[i];
-                        GameManager.Instance.ammos.RemoveAt(i);
                         Destroy(ammo);
                     }
+                    GameManager.Instance.ammos.Clear();
                 }
                 if (GameManager.Instance.monsters != null)
                 {
-                    for (int i = GameManager.Instance.monsters.Count - 1; i >= 0; i--)
+                    foreach (var Monster in GameManager.Instance.monsters)
                     {
-                        var monster = GameManager.Instance.monsters[i];
-                        monster.GetComponent<MonsterControllor>().Hp -= 50;
+                        Monster.GetComponent<MonsterControllor>().Hp -= 50;
                     }
                 }
                 if (GameManager.Instance.Boss != null)

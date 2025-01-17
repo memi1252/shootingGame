@@ -32,6 +32,7 @@ public class MonsterControllor : BaseControllor
                     EnemySpawn.Instance.max[i] = null;
                 }
             }
+            GameManager.Instance.monsters.Remove(gameObject);
             Destroy(gameObject);
         }
     }

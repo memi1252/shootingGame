@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00fe7566287dd394e969eced983430ad, type: 2}
+  - {fileID: 2100000, guid: 1358cb4b8fd96fa49a83cb002330130d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,3 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   audioSource: {fileID: 0}
+  damage: 20
+  particle: {fileID: 7082950498872946092, guid: f24044937c0ec9e4681f31c91d9fbfce,
+    type: 3}

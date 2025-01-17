@@ -41,15 +41,33 @@ public class EnemySpawn : MonoBehaviour
         var spawnPointIndex = Random.Range(0, spawnPoints.Length);
         if (max[spawnPointIndex] == null)
         {
-            var newEnemy = Instantiate(enemy[Random.Range(0, enemy.Length)], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-            if (newEnemy.GetComponent<MonsterControllor>() != null)
+            if (!GameManager.Instance.isBossDie1)
             {
-                GameManager.Instance.monsters.Add(newEnemy);
-                max[spawnPointIndex] = newEnemy;
+                var newEnemy = Instantiate(enemy[Random.Range(0, 1)], spawnPoints[spawnPointIndex].position,
+                    spawnPoints[spawnPointIndex].rotation);
+                if (newEnemy.GetComponent<MonsterControllor>() != null)
+                {
+                    GameManager.Instance.monsters.Add(newEnemy);
+                    max[spawnPointIndex] = newEnemy;
+                }
+                else
+                {
+                    GameManager.Instance.rocks.Add(newEnemy);
+                }
             }
             else
             {
-                GameManager.Instance.rocks.Add(newEnemy);
+                var newEnemy = Instantiate(enemy[Random.Range(2, 3)], spawnPoints[spawnPointIndex].position,
+                    spawnPoints[spawnPointIndex].rotation);
+                if (newEnemy.GetComponent<MonsterControllor>() != null)
+                {
+                    GameManager.Instance.monsters.Add(newEnemy);
+                    max[spawnPointIndex] = newEnemy;
+                }
+                else
+                {
+                    GameManager.Instance.rocks.Add(newEnemy);
+                }
             }
         }
     }

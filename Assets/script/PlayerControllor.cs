@@ -12,12 +12,13 @@ public class PlayerControllor : BaseControllor
     [SerializeField] public float fuel = 100;// 연료
     [SerializeField] private GameObject Ammo;
     [SerializeField] private AudioClip attacClip;
-    [SerializeField] private AudioSource audioSource;
+    
     [SerializeField] public int Damage = 20;
+    [SerializeField] private ParticleSystem particleSystem;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        
         StartCoroutine(fuelDown());
     }
 
@@ -27,13 +28,18 @@ public class PlayerControllor : BaseControllor
         if (Input.GetKeyDown(KeyCode.E))
         {
             Attack(Ammo, Damage);
-            audioSource.clip = attacClip;
-            audioSource.Play();
+            SoundManager.Instance.audioSource.clip = attacClip;
+            SoundManager.Instance.audioSource.Play();
+            particleSystem.Play();
         }
 
-        if (fuel == 0)
+        if (fuel <= 0)
         {
-            GameManager.Instance.playerDie = true;
+            Time.timeScale = 0;
+            UIManager.Instance.DIeUI.Show();
+            UIManager.Instance.PlayerState.Hide();
+            UIManager.Instance.PlayerSkill.HIDE();
+            fuel = 100000000;
         }
     }
     

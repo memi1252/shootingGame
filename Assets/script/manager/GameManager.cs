@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public bool nerverDie = false;
     public bool BossSpawned = false;
-    public bool playerDie = false;
+    public bool isBossDie1 = false;
     
     public int score = 0;
     public float playTime;
@@ -25,8 +25,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -46,14 +53,7 @@ public class GameManager : MonoBehaviour
                 nerverDieTime = 5;
             }
         }
-
-        if (playerDie)
-        {
-            Time.timeScale = 0;
-            UIManager.Instance.DIeUI.Show();
-            UIManager.Instance.PlayerState.Hide();
-            UIManager.Instance.PlayerSkill.HIDE();
-        }
+        PlayerControllor = GameObject.Find("Player").GetComponent<PlayerControllor>();
     }
 
     

@@ -16,7 +16,14 @@ public class BossUI : MonoBehaviour
     {
         if (GameManager.Instance.Boss != null)
         {
-            bossHpSlider.value = GameManager.Instance.Boss.GetComponent<BossControllor>().Hp / 1000;
+            if (GameManager.Instance.isBossDie1)
+            {
+                bossHpSlider.value = GameManager.Instance.Boss.GetComponent<BossControllor>().Hp / 3000;
+            }
+            else
+            {
+                bossHpSlider.value = GameManager.Instance.Boss.GetComponent<BossControllor>().Hp / 1000;
+            }
         }
         else
         {

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 6fd3b5c2df6073f4ea432cc9086b6f00, type: 3}
       propertyPath: m_Name
-      value: Boss
+      value: Boss1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6fd3b5c2df6073f4ea432cc9086b6f00, type: 3}
       propertyPath: m_TagString
@@ -112,16 +112,12 @@ MonoBehaviour:
   bup:
   - {fileID: 1529461375284580290, guid: cd431c9b641b52a439a613fd3317c220, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1529461375284580290, guid: 6aaa9e2b9ad217d4486516d05df0f35b, type: 3}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1529461375284580290, guid: 2404ee0d8b22e6d4a8e9ce73b561bdc5, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1529461375284580290, guid: 4e00c36ae7324274a9e3207dfd7ba0f9, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1529461375284580290, guid: 4a809ee2ac5381f49b149f5d548b2d7b, type: 3}
 --- !u!65 &8721227580651035318
 BoxCollider:
   m_ObjectHideFlags: 0
